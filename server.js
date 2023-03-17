@@ -45,11 +45,11 @@ app.get("/", (req, res) => {
 const botName = "ChatBot";
 
 const options = [
-  "Select 1 to Place an order",
-  "Select 99 to checkout order",
-  "Select 98 to see order history",
-  "Select 97 to see current order",
-  "Select 0 to cancel order",
+  "Type 1 to Place an order",
+  "Type 99 to checkout order",
+  "Type 98 to see order history",
+  "Type 97 to see current order",
+  "Type 0 to cancel order",
 ];
 
 const menus = [
@@ -124,7 +124,7 @@ io.on("connection", (socket) => {
               type: "no-order",
               data: {
                 message:
-                  "You have not made any order yet!  Select 1 to Place an order",
+                  "You have not made any order yet!  Type 1 to Place an order",
               },
             });
           } else {
