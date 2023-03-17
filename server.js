@@ -38,8 +38,8 @@ const PORT = 3500 || process.env.PORT;
 app.use(express.static("public"));
 
 
-app.get("/chat.html", (req, res) => {
-  res.sendFile(__dirname + "/chat.html");
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
 
 const botName = "ChatBot";
