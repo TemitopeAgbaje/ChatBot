@@ -16,6 +16,8 @@ const displayMessage = (message, isBotMessage) => {
   div.innerHTML = message;
 
   document.querySelector(".chat-messages").append(div);
+  chatMessage.scrollTop = chatMessage.scrollHeight;
+
 };
 
 const displayMenu = (menus) => {
@@ -116,7 +118,6 @@ socket.on("message", (message) => {
   outputMessage(message);
 
   //Scroll Down
-  chatMessage.scrollTop = chatMessage.scrollHeight;
 });
 
 chatForm.addEventListener("submit", (e) => {
