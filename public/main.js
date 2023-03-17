@@ -9,7 +9,7 @@ const displayOptions = (options) => {
     .join("")} </ul>`;
   displayMessage(message, true);
 };
-// ("");
+
 const displayMessage = (message, isBotMessage) => {
   const div = document.createElement("div");
   div.className = `message message-${isBotMessage ? "bot" : "user"}`;
@@ -110,14 +110,6 @@ socket.on("botResponse", ({ type, data }) => {
       displayMessage(data.message, true);
       break;
   }
-});
-
-//message from server
-socket.on("message", (message) => {
-  console.log(message);
-  outputMessage(message);
-
-  //Scroll Down
 });
 
 chatForm.addEventListener("submit", (e) => {

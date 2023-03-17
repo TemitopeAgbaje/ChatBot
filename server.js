@@ -83,20 +83,16 @@ io.on("connection", (socket) => {
   socket.on(
     "chatMessage",
     (msg) => {
-      // if (
-      //   msg === "1" ||
-      //   msg === "99" ||
-      //   msg === "98" ||
-      //   msg === "97" ||
-      //   msg === "0"
-      // ) {
-      //   console.log(msg, typeof msg);
+
+      //Regex for 2-11, to pick a menu
       const pattern = /^[2-9]|1[0-1]$/;
 
       switch (true) {
-        case msg === "1":
+        //Places an order
+        case msg === "1": 
           socket.emit("botResponse", { type: "menu", data: menus });
           break;
+          //to checkout order
         case msg === "99":
           if (session.orders.length == 0) {
             socket.emit("botResponse", {
@@ -113,19 +109,15 @@ io.on("connection", (socket) => {
           }
 
           break;
+          //to see order history
         case msg === "98":
-          //Saving each order
-          // const orderList = Order.find({ sessionId: session.id })
-          //   .exec()
-          //   .then((value) =>  
-          //   ());
-
-            socket.emit("botResponse", {
+          socket.emit("botResponse", {
               type: "order-history",
               data: session.orders,
             })
 
           break;
+          //to see current order
         case msg === "97":
           if (session.orders.length == 0) {
             socket.emit("botResponse", {
@@ -142,7 +134,7 @@ io.on("connection", (socket) => {
             });
           }
           break;
-
+          //cancel order
         case msg === "0":
           if (session.orders.length == 0) {
             socket.emit("botResponse", {
@@ -162,7 +154,6 @@ io.on("connection", (socket) => {
             session.orders = [];
             session.save();
           }
-
           break;
         case pattern.test(msg):
           const order = menus.find((item) => item.id == +msg);
@@ -188,14 +179,6 @@ io.on("connection", (socket) => {
           break;
       }
     }
-    // else {
-    //   socket.emit("botResponse", {
-    //     type: "wrong-input",
-    //     data: {
-    //       message: `Your input is wrong, Try again!`,
-    //     },
-    //   });
-    // }
   );
 });
 
