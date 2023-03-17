@@ -40,10 +40,10 @@ const displayOrder = (orders) => {
   } else {
     const options = [
       "Continue your order by clicking 2 - 11",
-      "Select 99 to checkout order",
-      "Select 98 to see order history",
-      "Select 97 to see current order",
-      "Select 0 to cancel order",
+      "Type 99 to checkout order",
+      "Type 98 to see order history",
+      "Type 97 to see current order",
+      "Type 0 to cancel order",
     ];
 
     const message = `You just ordered for : \n <ul> ${orders
