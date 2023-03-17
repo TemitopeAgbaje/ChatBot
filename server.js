@@ -8,9 +8,6 @@ const http = require("http");
 const socketio = require("socket.io");
 const db = require("./db");
 require("dotenv").config();
-// const formatMessage = require("./utils/messages");
-// const { getCurrentUser, userJoin } = require("./utils/users");
-// const MongoClient = require("mongodb").MongoClient;
 
 const app = express();
 const server = http.createServer(app);
@@ -38,7 +35,12 @@ io.use((socket, next) => sessionMiddleware(socket.request, {}, next));
 const PORT = 3500 || process.env.PORT;
 
 //Setting the static path
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
+
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/chat.html");
+});
 
 const botName = "ChatBot";
 
